@@ -288,6 +288,7 @@ public class GUI {
 		// pane
 		pane = new JLayeredPane();
 		getPane().setBounds(0,0,500,350);
+		getFrame().add(getPane());
 		
 		Font font = new Font("Arial", Font.BOLD, 18);
 		
@@ -295,31 +296,37 @@ public class GUI {
 		resistanceLabel = new JLabel("Resistance:");
 		getResistanceLabel().setBounds(130,15,105,30);
 		getResistanceLabel().setFont(font);
+		getFrame().add(getResistanceLabel());
 		
 		// resistance result label
 		resistanceResultLabel = new JLabel("0.00000 Ω");
 		getResistanceResultLabel().setBounds(250,15,250,30);
 		getResistanceResultLabel().setFont(font);
+		getFrame().add(getResistanceResultLabel());
 		
 		// tolerance label
 		toleranceLabel = new JLabel("Tolerance:");
 		getToleranceLabel().setBounds(139,50,95,30);
 		getToleranceLabel().setFont(font);
+		getFrame().add(getToleranceLabel());
 		
 		// tolerance result label
 		toleranceResultLabel = new JLabel("±0.0 %");
 		getToleranceResultLabel().setBounds(250,50,250,30);
 		getToleranceResultLabel().setFont(font);
+		getFrame().add(getToleranceResultLabel());
 		
 		// temperature coefficient label
 		temperatureCoefficientLabel = new JLabel("Temperature Coefficient:");
 		getTemperatureCoefficientLabel().setBounds(14,85,220,30);
 		getTemperatureCoefficientLabel().setFont(font);
+		getFrame().add(getTemperatureCoefficientLabel());
 		
 		// temperature coefficient result label
 		temperatureCoefficientResultLabel = new JLabel("0.0 ppm/K");
 		getTemperatureCoefficientResultLabel().setBounds(250,85,250,30);
 		getTemperatureCoefficientResultLabel().setFont(font);
+		getFrame().add(getTemperatureCoefficientResultLabel());
 		
 		// bands
 		band1Label = new JLabel();
@@ -386,6 +393,8 @@ public class GUI {
 					updateBandColours();
 				}
 			});
+			
+			getFrame().add(getBandComboBox(i));
 		}
 		
 		// resistor label
@@ -410,6 +419,7 @@ public class GUI {
 				calculate();
 			}
 		});
+		getFrame().add(getCalculateButton());
 		
 		System.out.println("Finished setting up components");
 	}
@@ -427,18 +437,8 @@ public class GUI {
 		getFrame().setLocationRelativeTo(null);
 		getFrame().setLayout(null);
 		
-		// setup and add components
+		// setup components
 		setupComponents();
-		getFrame().add(getPane());
-		getFrame().add(getResistanceLabel());
-		getFrame().add(getResistanceResultLabel());
-		getFrame().add(getToleranceLabel());
-		getFrame().add(getToleranceResultLabel());
-		getFrame().add(getTemperatureCoefficientLabel());
-		getFrame().add(getTemperatureCoefficientResultLabel());
-		for (int i = 1; i <= 6; i++) getFrame().add(getBandComboBox(i));
-		getFrame().add(getCalculateButton());
-		
 		updateBandColours();
 		
 		getFrame().setVisible(true);
