@@ -19,7 +19,7 @@ import javax.swing.WindowConstants;
 
 import me.alex_whit.resistancecalculator.ResistanceCalculator;
 
-public class Gui {
+public class GUI {
 	private static JFrame frame = new JFrame();
 	private static JLayeredPane pane = new JLayeredPane();
 	private static JLabel resistanceLabel = new JLabel();
@@ -121,7 +121,7 @@ public class Gui {
 					getBandLabel(i).setIcon(null);
 					break;
 				default:
-					getBandLabel(i).setIcon(new ImageIcon(ImageIO.read(Gui.class.getResource(String.format("/band%s/resistor_band%s_%s.png",
+					getBandLabel(i).setIcon(new ImageIcon(ImageIO.read(GUI.class.getResource(String.format("/band%s/resistor_band%s_%s.png",
 							i, i, colour)))));
 				}
 					
@@ -373,7 +373,7 @@ public class Gui {
 		// resistor label
 		getResistorLabel().setBounds(132,135,235,61);
 		try {
-			getResistorLabel().setIcon(new ImageIcon(ImageIO.read(Gui.class.getResource("/resistor.png"))));
+			getResistorLabel().setIcon(new ImageIcon(ImageIO.read(GUI.class.getResource("/resistor.png"))));
 		} catch (IOException exception) {
 			exception.printStackTrace();
 		}

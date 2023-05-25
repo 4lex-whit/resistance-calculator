@@ -1,10 +1,10 @@
 package me.alex_whit.resistancecalculator;
 
-import me.alex_whit.resistancecalculator.gui.Gui;
+import me.alex_whit.resistancecalculator.gui.GUI;
 
 public class ResistanceCalculator {
 	public static String getVersion() {
-		return "v1.0.0";
+		return "v1.0.1";
 	}
 	
 	public static void main(String[] args) {
@@ -14,6 +14,6 @@ public class ResistanceCalculator {
 				   By alex_whit
 				 """, getVersion()));
 		
-		Gui.create();
+		GUI.create();
 	}
 }
