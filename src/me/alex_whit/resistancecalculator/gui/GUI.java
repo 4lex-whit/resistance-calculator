@@ -20,28 +20,28 @@ import javax.swing.WindowConstants;
 import me.alex_whit.resistancecalculator.ResistanceCalculator;
 
 public class GUI {
-	private static JFrame frame = new JFrame();
-	private static JLayeredPane pane = new JLayeredPane();
-	private static JLabel resistanceLabel = new JLabel();
-	private static JLabel resistanceResultLabel = new JLabel();
-	private static JLabel toleranceLabel = new JLabel();
-	private static JLabel toleranceResultLabel = new JLabel();
-	private static JLabel temperatureCoefficientLabel = new JLabel();
-	private static JLabel temperatureCoefficientResultLabel = new JLabel();
-	private static JLabel resistorLabel = new JLabel();
-	private static JLabel band1Label = new JLabel();
-	private static JLabel band2Label = new JLabel();
-	private static JLabel band3Label = new JLabel();
-	private static JLabel band4Label = new JLabel();
-	private static JLabel band5Label = new JLabel();
-	private static JLabel band6Label = new JLabel();
-	private static JComboBox<String> band1ComboBox = new JComboBox<String>();
-	private static JComboBox<String> band2ComboBox = new JComboBox<String>();
-	private static JComboBox<String> band3ComboBox = new JComboBox<String>();
-	private static JComboBox<String> band4ComboBox = new JComboBox<String>();
-	private static JComboBox<String> band5ComboBox = new JComboBox<String>();
-	private static JComboBox<String> band6ComboBox = new JComboBox<String>();
-	private static JButton calculateButton = new JButton();
+	private static JFrame frame;
+	private static JLayeredPane pane;
+	private static JLabel resistanceLabel;
+	private static JLabel resistanceResultLabel;
+	private static JLabel toleranceLabel;
+	private static JLabel toleranceResultLabel;
+	private static JLabel temperatureCoefficientLabel;
+	private static JLabel temperatureCoefficientResultLabel;
+	private static JLabel resistorLabel;
+	private static JLabel band1Label;
+	private static JLabel band2Label;
+	private static JLabel band3Label;
+	private static JLabel band4Label;
+	private static JLabel band5Label;
+	private static JLabel band6Label;
+	private static JComboBox<String> band1ComboBox;
+	private static JComboBox<String> band2ComboBox;
+	private static JComboBox<String> band3ComboBox;
+	private static JComboBox<String> band4ComboBox;
+	private static JComboBox<String> band5ComboBox;
+	private static JComboBox<String> band6ComboBox;
+	private static JButton calculateButton;
 	
 	private static JFrame getFrame() {
 		return frame;
@@ -283,43 +283,59 @@ public class GUI {
 		System.out.println("Setting up components...");
 		
 		// pane
+		pane = new JLayeredPane();
 		getPane().setBounds(0,0,500,350);
 		
 		Font font = new Font("Arial", Font.BOLD, 18);
 		
 		// resistance label
+		resistanceLabel = new JLabel("Resistance:");
 		getResistanceLabel().setBounds(130,15,105,30);
-		getResistanceLabel().setText("Resistance:");
 		getResistanceLabel().setFont(font);
 		
 		// resistance result label
+		resistanceResultLabel = new JLabel("0.00000 Ω");
 		getResistanceResultLabel().setBounds(250,15,250,30);
-		getResistanceResultLabel().setText("0.00000 Ω");
 		getResistanceResultLabel().setFont(font);
 		
 		// tolerance label
+		toleranceLabel = new JLabel("Tolerance:");
 		getToleranceLabel().setBounds(139,50,95,30);
-		getToleranceLabel().setText("Tolerance:");
 		getToleranceLabel().setFont(font);
 		
 		// tolerance result label
+		toleranceResultLabel = new JLabel("±0.0 %");
 		getToleranceResultLabel().setBounds(250,50,250,30);
-		getToleranceResultLabel().setText("±0.0 %");
 		getToleranceResultLabel().setFont(font);
 		
 		// temperature coefficient label
+		temperatureCoefficientLabel = new JLabel("Temperature Coefficient:");
 		getTemperatureCoefficientLabel().setBounds(14,85,220,30);
-		getTemperatureCoefficientLabel().setText("Temperature Coefficient:");
 		getTemperatureCoefficientLabel().setFont(font);
 		
 		// temperature coefficient result label
+		temperatureCoefficientResultLabel = new JLabel("0.0 ppm/K");
 		getTemperatureCoefficientResultLabel().setBounds(250,85,250,30);
-		getTemperatureCoefficientResultLabel().setText("0.0 ppm/K");
 		getTemperatureCoefficientResultLabel().setFont(font);
 		
-		// band combo boxes
+		// bands
+		band1Label = new JLabel();
+		band2Label = new JLabel();
+		band3Label = new JLabel();
+		band4Label = new JLabel();
+		band5Label = new JLabel();
+		band6Label = new JLabel();
+		
+		band1ComboBox = new JComboBox<String>();
+		band2ComboBox = new JComboBox<String>();
+		band3ComboBox = new JComboBox<String>();
+		band4ComboBox = new JComboBox<String>();
+		band5ComboBox = new JComboBox<String>();
+		band6ComboBox = new JComboBox<String>();
+		
 		for (int i = 1; i <= 6; i++) {
 			// band labels
+			
 			getBandLabel(i).setBounds(132,135,235,61);
 			getBandLabel(i).setFont(font);
 			getPane().add(getBandLabel(i),0+i);
@@ -371,6 +387,7 @@ public class GUI {
 		}
 		
 		// resistor label
+		resistorLabel = new JLabel();
 		getResistorLabel().setBounds(132,135,235,61);
 		try {
 			getResistorLabel().setIcon(new ImageIcon(ImageIO.read(GUI.class.getResource("/resistor.png"))));
@@ -380,8 +397,8 @@ public class GUI {
 		getPane().add(getResistorLabel(), -1);
 		
 		// calculate button
+		calculateButton = new JButton("Calculate");
 		getCalculateButton().setBounds(192,265,115,30);
-		getCalculateButton().setText("Calculate");
 		getCalculateButton().setFont(font);
 		getCalculateButton().addActionListener(new ActionListener() {
 			@Override
@@ -396,7 +413,9 @@ public class GUI {
 	public static void create() {
 		System.out.println("Creating GUI...");
 		
-		// set settings
+		frame = new JFrame();
+		
+		// frame setup
 		getFrame().setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		getFrame().setTitle(String.format("Resistance Calculator │ %s", ResistanceCalculator.getVersion()));
 		getFrame().setResizable(false);
