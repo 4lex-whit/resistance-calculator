@@ -381,7 +381,7 @@ public class GUI {
 			getBandComboBox(i).addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent event) {
-					System.out.println(String.format("Selected band colour"));
+					System.out.println("Selected band colour");
 					
 					updateBandColours();
 				}
