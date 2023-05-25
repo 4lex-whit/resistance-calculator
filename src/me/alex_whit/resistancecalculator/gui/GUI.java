@@ -124,11 +124,12 @@ public class GUI {
 					getBandLabel(i).setIcon(new ImageIcon(ImageIO.read(GUI.class.getResource(String.format("/band%s/resistor_band%s_%s.png",
 							i, i, colour)))));
 				}
-					
 			} catch (IOException exception) {
 				exception.printStackTrace();
 			}
 		}
+		
+		System.out.println("Finished updating band colours");
 	}
 	
 	private static void calculate() {
@@ -277,6 +278,8 @@ public class GUI {
 		getResistanceResultLabel().setText(String.format("%s Ω", resistanceRounded));
 		getToleranceResultLabel().setText(String.format("±%s %%", tolerance));
 		getTemperatureCoefficientResultLabel().setText(String.format("%s ppm/K", temperatureCoefficient));
+		
+		System.out.println("Finished calculating results");
 	}
 	
 	public static void setupComponents() {
@@ -335,7 +338,6 @@ public class GUI {
 		
 		for (int i = 1; i <= 6; i++) {
 			// band labels
-			
 			getBandLabel(i).setBounds(132,135,235,61);
 			getBandLabel(i).setFont(font);
 			getPane().add(getBandLabel(i),0+i);
@@ -379,7 +381,7 @@ public class GUI {
 			getBandComboBox(i).addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent event) {
-					System.out.println("Band colour selected");
+					System.out.println(String.format("Selected band colour"));
 					
 					updateBandColours();
 				}
@@ -403,11 +405,13 @@ public class GUI {
 		getCalculateButton().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event) {
-				System.out.println("Calculate button clicked");
+				System.out.println("Clicked calculate button");
 				
 				calculate();
 			}
 		});
+		
+		System.out.println("Finished setting up components");
 	}
 	
 	public static void create() {
@@ -438,5 +442,7 @@ public class GUI {
 		updateBandColours();
 		
 		getFrame().setVisible(true);
+		
+		System.out.println("Finished creating GUI");
 	}
 }

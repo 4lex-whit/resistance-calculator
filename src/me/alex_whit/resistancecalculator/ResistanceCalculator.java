@@ -4,7 +4,7 @@ import me.alex_whit.resistancecalculator.gui.GUI;
 
 public class ResistanceCalculator {
 	public static String getVersion() {
-		return "v1.0.2";
+		return "v1.0.3";
 	}
 	
 	public static void main(String[] args) {
